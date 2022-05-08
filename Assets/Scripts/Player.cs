@@ -8,10 +8,14 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D playerRigidBody;
 
+    private Camera mainCamera;
+
     // Start is called before the first frame update
     void Start()
     {
         playerRigidBody = GetComponent<Rigidbody2D>();
+
+        mainCamera = Camera.main;
     }
 
     // Update is called once per frame
@@ -23,6 +27,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+        Aim();
     }
 
     private void Move()
@@ -31,5 +36,17 @@ public class Player : MonoBehaviour
         float y = Input.GetAxis("Vertical");
 
         playerRigidBody.velocity = new Vector2(x * speed, y * speed);
+    }
+
+    private void Aim()
+    {
+        // Find angle.
+        Vector3 mouse = Input.mousePosition;
+        Vector3 screenPosition = mainCamera.WorldToScreenPoint(gameObject.transform.position);
+        float angleInRad = Mathf.Atan2(mouse.y - screenPosition.y, mouse.x - screenPosition.x);
+        float angleInDeg = angleInRad * Mathf.Rad2Deg;
+
+        // Rotate the torch.
+        playerRigidBody.MoveRotation(angleInDeg);
     }
 }
