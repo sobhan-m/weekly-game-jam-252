@@ -206,11 +206,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &2081529672 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 723562385114314236, guid: 4620b4a99f8d0c94996d4a2f8660fa2f, type: 3}
-  m_PrefabInstance: {fileID: 723562384240880308}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &723562384240880308
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -266,25 +261,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 723562385114314227, guid: 4620b4a99f8d0c94996d4a2f8660fa2f, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 723562385114314236, guid: 4620b4a99f8d0c94996d4a2f8660fa2f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 889599318264087074, guid: 4620b4a99f8d0c94996d4a2f8660fa2f, type: 3}
-      propertyPath: shotForce
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 889599318264087074, guid: 4620b4a99f8d0c94996d4a2f8660fa2f, type: 3}
-      propertyPath: shotPrefab
-      value: 
-      objectReference: {fileID: 8457352306928808467, guid: a21431a69bea8d84f8e50799426c71bc, type: 3}
-    - target: {fileID: 889599318264087074, guid: 4620b4a99f8d0c94996d4a2f8660fa2f, type: 3}
-      propertyPath: shootingSource
-      value: 
-      objectReference: {fileID: 2081529672}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4620b4a99f8d0c94996d4a2f8660fa2f, type: 3}
