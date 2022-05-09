@@ -112,8 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed08bfbddee608429e2c4d3e1646527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingSource: {fileID: 0}
-  shotPrefab: {fileID: 0}
+  bulletSource: {fileID: 723562385114314236}
+  bulletPrefab: {fileID: 8457352306928808467, guid: a21431a69bea8d84f8e50799426c71bc, type: 3}
   shotSpeed: 20
 --- !u!50 &723562383928479483
 Rigidbody2D:
@@ -161,8 +161,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 723562385114314236}
-  m_Layer: 0
-  m_Name: ShotSource
+  m_Layer: 6
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -181,4 +181,4 @@ Transform:
   m_Children: []
   m_Father: {fileID: 723562383928479462}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}

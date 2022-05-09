@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shooting : MonoBehaviour
+public class Gun : MonoBehaviour
 {
-    [SerializeField] Transform shootingSource;
-    [SerializeField] GameObject shotPrefab;
+    [SerializeField] Transform bulletSource;
+    [SerializeField] GameObject bulletPrefab;
 
     public float shotSpeed = 20f;
 
@@ -26,8 +26,8 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
-        GameObject shot = Instantiate(shotPrefab, shootingSource.position, shootingSource.rotation);
+        GameObject shot = Instantiate(bulletPrefab, bulletSource.position, bulletSource.rotation);
         Rigidbody2D rb = shot.GetComponent<Rigidbody2D>();
-        rb.AddForce(shootingSource.up * shotSpeed, ForceMode2D.Impulse);
+        rb.AddForce(bulletSource.up * shotSpeed, ForceMode2D.Impulse);
     }
 }
