@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] float hp = 100f;
+    [SerializeField] float maxHP = 100f;
+    private float currentHP;
+
+    private void Start()
+    {
+        currentHP = maxHP;
+    }
 
     public void TakeDamage(float damage)
     {
-        hp -= damage;
-        if (hp <= 0)
+        currentHP -= damage;
+        if (currentHP <= 0)
         {
             Die();
         }
@@ -18,5 +24,15 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
+    }
+
+    public float GetCurrentHP()
+    {
+        return currentHP;
+    }
+
+    public float GetMaxHP()
+    {
+        return maxHP;
     }
 }

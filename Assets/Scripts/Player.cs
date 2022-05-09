@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] float speed;
+    [SerializeField] float speed = 5f;
+    [SerializeField] float hp = 100f;
 
     private Rigidbody2D playerRigidBody;
 
@@ -48,5 +49,19 @@ public class Player : MonoBehaviour
 
         // Rotate the torch.
         playerRigidBody.MoveRotation(angleInDeg);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        hp -= damage;
+        if (hp <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }
