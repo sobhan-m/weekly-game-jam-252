@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
         Vector3 mouse = Input.mousePosition;
         Vector3 screenPosition = mainCamera.WorldToScreenPoint(gameObject.transform.position);
         float angleInRad = Mathf.Atan2(mouse.y - screenPosition.y, mouse.x - screenPosition.x);
-        float angleInDeg = angleInRad * Mathf.Rad2Deg;
+        float angleInDeg = angleInRad * Mathf.Rad2Deg - 90;
 
         // Rotate the torch.
         playerRigidBody.MoveRotation(angleInDeg);
