@@ -1,12 +1,9 @@
 fileFormatVersion: 2
-guid: 236cce8f17fadd5489c3ab6a4b723c08
+guid: 3189a26736768c74081a526621b757f4
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - ketchupSprite: {instanceID: 0}
-  - mayonnaiseSprite: {instanceID: 0}
-  - mustardSprite: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
