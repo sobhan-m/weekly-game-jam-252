@@ -7,14 +7,20 @@ public class Gun : MonoBehaviour
     [SerializeField] Transform bulletSource;
     [SerializeField] GameObject bulletPrefab;
 
+    [SerializeField] Sprite ketchupBottle;
+    [SerializeField] Sprite mayoBottle;
+    [SerializeField] Sprite mustardBottle;
+
     private WeaponTypes gunType = WeaponTypes.KETCHUP;
+
+    private SpriteRenderer spriteRenderer;
 
     public float shotSpeed = 20f;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -27,15 +33,15 @@ public class Gun : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            gunType = WeaponTypes.KETCHUP;
+            SetGunType(WeaponTypes.KETCHUP);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            gunType = WeaponTypes.MAYONNAISE;
+            SetGunType(WeaponTypes.MAYONNAISE);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            gunType = WeaponTypes.MUSTARD;
+            SetGunType(WeaponTypes.MUSTARD);
         }
     }
 
@@ -53,6 +59,19 @@ public class Gun : MonoBehaviour
     public void SetGunType(WeaponTypes type)
     {
         gunType = type;
+
+        if (type == WeaponTypes.KETCHUP)
+        {
+            spriteRenderer.sprite = ketchupBottle;
+        }
+        else if (type == WeaponTypes.MAYONNAISE)
+        {
+            spriteRenderer.sprite = mayoBottle;
+        }
+        else if (type == WeaponTypes.MUSTARD)
+        {
+            spriteRenderer.sprite = mustardBottle;
+        }
     }
 
     public WeaponTypes GetGunType()
