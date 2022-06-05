@@ -7,13 +7,14 @@ It is a top-down shooter about fighting off animated food objects (based on the 
 
 ### Programming
 - [x] Implement Shooting
-- [x] Implement Weapon Swapping / Types
+- [x] Implement Shot Types And Swapping
+- [x] Implement Weapon Swapping
 - [ ] Implement Grenade Mechanic
 
 ### Art
 - [x] Main Character Sprite
 - [x] Missile Type Sprites
-- [ ] Weapon Type Sprites
+- [x] Weapon Type Sprites
 - [ ] Enemy Variant 1 Sprite
 - [ ] Enemy Variant 2 Sprite
 - [ ] Enemy Variant 3 Sprite
