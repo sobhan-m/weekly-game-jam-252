@@ -10,6 +10,8 @@ public class Grenade : MonoBehaviour
     [SerializeField] float secondsAfterExplosion = 0.25f;
     [SerializeField] float stopSensitivity = 0.25f;
 
+    [SerializeField] GameObject particles;
+
     private CircleCollider2D explosion;
     private Rigidbody2D rb;
 
@@ -35,6 +37,8 @@ public class Grenade : MonoBehaviour
         shouldExplode = false;
         hasExploded = false;
         isTriggered = false;
+
+        particles.SetActive(false);
     }
 
     // Update is called once per frame
@@ -88,6 +92,7 @@ public class Grenade : MonoBehaviour
         if (isTriggered && rb.velocity.magnitude <= Mathf.Epsilon + stopSensitivity && explosion.radius < explosionRadius)
         {
             explosion.radius += explosionRadiusChangeRate * Time.deltaTime;
+            particles.SetActive(true);
         }
         else if (!hasExploded && explosion.radius >= explosionRadius)
         {
