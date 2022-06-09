@@ -20,6 +20,10 @@ It is a top-down shooter about fighting off animated food objects (based on the 
 - [ ] Enemy Variant 2 Sprite
 - [ ] Enemy Variant 3 Sprite
 
+### Effects
+- [x] Grenade
+- [ ] Weapon
+
 ### Sound
 - [ ] Walking
 - [ ] Ambient Music

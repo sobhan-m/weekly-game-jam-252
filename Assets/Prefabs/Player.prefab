@@ -255,6 +255,10 @@ PrefabInstance:
       propertyPath: spinSpeed
       value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 6508925749735060537, guid: 9ab71cc439555e64ca3ccea7cbba7232, type: 3}
+      propertyPath: maxGrenades
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6508925749735060539, guid: 9ab71cc439555e64ca3ccea7cbba7232, type: 3}
       propertyPath: m_Name
       value: GrenadeSource
