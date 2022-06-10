@@ -16,6 +16,9 @@ It is a top-down shooter about fighting off animated food objects (based on the 
 - [x] ~~Missile Type Sprites~~
 - [x] ~~Weapon Type Sprites~~
 - [x] ~~Grenade Sprite~~
+- [x] Floor Tiles
+- [ ] Wall Tiles
+- [ ] Other Tiles
 - [ ] Enemy Variant 1 Sprite
 - [ ] Enemy Variant 2 Sprite
 - [ ] Enemy Variant 3 Sprite
