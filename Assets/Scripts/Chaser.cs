@@ -36,11 +36,11 @@ public class Chaser : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, currentSpeed * Time.deltaTime);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            player.TakeDamage(damage);
+            player.TakeDamage(damage * Time.deltaTime);
         }
     }
 }

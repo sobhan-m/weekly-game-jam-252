@@ -5,7 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] float speed = 5f;
-    [SerializeField] float hp = 100f;
+    [SerializeField] float maxHP = 100f;
+
+    private float hp;
 
     private Rigidbody2D playerRigidBody;
 
@@ -14,6 +16,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        hp = maxHP;
+
         playerRigidBody = GetComponent<Rigidbody2D>();
 
         mainCamera = Camera.main;
@@ -63,5 +67,10 @@ public class Player : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
+    }
+
+    public float GetCurrentHP()
+    {
+        return hp;
     }
 }
