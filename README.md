@@ -36,8 +36,8 @@ It is a top-down shooter about fighting off animated food objects (based on the 
 
 ### UI/UX
 - [ ] Create Weapon UI
-- [ ] Create Grenade UI
-- [ ] Create Health UI
+- [x] Create Grenade UI
+- [x] Create Health UI
 
 ### Publishing
 - [ ] Come Up With Name
