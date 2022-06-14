@@ -16,7 +16,7 @@ It is a top-down shooter about fighting off animated food objects (based on the 
 - [x] ~~Missile Type Sprites~~
 - [x] ~~Weapon Type Sprites~~
 - [x] ~~Grenade Sprite~~
-- [x] Floor Tiles
+- [x] ~~Floor Tiles~~
 - [ ] Wall Tiles
 - [ ] Other Tiles
 - [ ] Enemy Variant 1 Sprite
@@ -24,7 +24,7 @@ It is a top-down shooter about fighting off animated food objects (based on the 
 - [ ] Enemy Variant 3 Sprite
 
 ### Effects
-- [x] Grenade
+- [x] ~~Grenade~~
 - [ ] Weapon
 
 ### Sound
@@ -35,9 +35,9 @@ It is a top-down shooter about fighting off animated food objects (based on the 
 - [ ] Enemy Sounds
 
 ### UI/UX
-- [ ] Create Weapon UI
-- [x] Create Grenade UI
-- [x] Create Health UI
+- [x] ~~Create Weapon UI~~
+- [x] ~~Create Grenade UI~~
+- [x] ~~Create Health UI~~
 
 ### Publishing
 - [ ] Come Up With Name
