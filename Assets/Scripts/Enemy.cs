@@ -2,37 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, Health
 {
-    [SerializeField] float maxHP = 100f;
-    private float currentHP;
+    [SerializeField] float maxHealth = 100f;
+    private float currentHealth;
 
     private void Start()
     {
-        currentHP = maxHP;
-    }
-
-    public void TakeDamage(float damage)
-    {
-        currentHP -= damage;
-        if (currentHP <= 0)
-        {
-            Die();
-        }
-    }
+        currentHealth = maxHealth;
+    }    
 
     private void Die()
     {
         Destroy(gameObject);
     }
 
-    public float GetCurrentHP()
+    public void TakeHeal(float healAmount)
     {
-        return currentHP;
+        currentHealth = Mathf.Min(maxHealth, currentHealth + healAmount);
     }
 
-    public float GetMaxHP()
+    public void TakeDamage(float damageAmount)
     {
-        return maxHP;
+        if (!IsDead())
+        {
+            currentHealth = Mathf.Max(0, currentHealth - damageAmount);
+            if (IsDead())
+            {
+                Die();
+            }
+        }
+    }
+
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public bool IsDead()
+    {
+        return currentHealth <= Mathf.Epsilon;
     }
 }

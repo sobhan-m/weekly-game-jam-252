@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, Health
 {
     [SerializeField] float speed = 5f;
-    [SerializeField] float maxHP = 100f;
+    [SerializeField] float maxHealth = 100f;
 
-    private float hp;
+    private float currentHealth;
 
     private Rigidbody2D playerRigidBody;
 
@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hp = maxHP;
+        currentHealth = maxHealth;
 
         playerRigidBody = GetComponent<Rigidbody2D>();
 
@@ -55,22 +55,41 @@ public class Player : MonoBehaviour
         playerRigidBody.MoveRotation(angleInDeg);
     }
 
-    public void TakeDamage(float damage)
-    {
-        hp -= damage;
-        if (hp <= 0)
-        {
-            Die();
-        }
-    }
-
     private void Die()
     {
         Destroy(gameObject);
     }
 
-    public float GetCurrentHP()
+    public void TakeHeal(float healAmount)
     {
-        return hp;
+        currentHealth = Mathf.Min(maxHealth, currentHealth + healAmount);
+    }
+
+    public void TakeDamage(float damageAmount)
+    {
+        if (!IsDead())
+        {
+            currentHealth = Mathf.Max(0, currentHealth - damageAmount);
+            if (IsDead())
+            {
+                Die();
+            }
+        }
+        
+    }
+
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public bool IsDead()
+    {
+        return currentHealth <= Mathf.Epsilon;
     }
 }
