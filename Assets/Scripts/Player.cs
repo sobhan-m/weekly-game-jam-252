@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour, Health
+public class Player : MonoBehaviour, IHealth
 {
     [SerializeField] float speed = 5f;
     [SerializeField] float maxHealth = 100f;

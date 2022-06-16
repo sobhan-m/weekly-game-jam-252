@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Health
+public interface IHealth
 {
     public void TakeDamage(float damageAmount);
     public void TakeHeal(float healAmount);
