@@ -4,96 +4,83 @@ using UnityEngine;
 
 public class Grenade : MonoBehaviour
 {
-    [SerializeField] float explosionRadius;
-    [SerializeField] float damage;
-    [SerializeField] float secondsToBlow;
-    [SerializeField] float secondsAfterExplosion = 0.25f;
+    [SerializeField] float explosionRadius = 2f;
+    [SerializeField] float damagePerSecond = 20f;
+    [SerializeField] float secondsToMaxRadius = 0.5f;
+    [SerializeField] float secondsToEnd = 2f;
     [SerializeField] float stopSensitivity = 0.25f;
 
     [SerializeField] GameObject particles;
 
-    private CircleCollider2D explosion;
+    private CircleCollider2D gasCollider;
     private Rigidbody2D rb;
 
     private float explosionRadiusChangeRate;
-
-    private bool shouldExplode;
-    private bool hasExploded;
     private bool isTriggered;
 
-    private List<IHealth> creaturesAffected;
+    //===============================
+    // Unity
+    //===============================
 
-
-    // Start is called before the first frame update
     void Awake()
     {
-        explosion = gameObject.GetComponent<CircleCollider2D>();
+        gasCollider = gameObject.GetComponent<CircleCollider2D>();
         rb = gameObject.GetComponent<Rigidbody2D>();
 
-        creaturesAffected = new List<IHealth>();
-
-        explosionRadiusChangeRate = explosionRadius / secondsToBlow;
-
-        shouldExplode = false;
-        hasExploded = false;
-        isTriggered = false;
-
-        particles.SetActive(false);
+        isTriggered = false; // Must be in Awake() because it is immediately triggered when thrown.
     }
 
-    // Update is called once per frame
+    private void Start()
+    {
+        particles.SetActive(false);
+        explosionRadiusChangeRate = explosionRadius / secondsToMaxRadius;
+    }
+
     void Update()
     {
         Expand();
-        Explode();
-    }
-
-    public void TriggerExplosion()
-    {
-        isTriggered = true;
-    }
-
-    private void Explode()
-    {
-        if (shouldExplode)
-        {
-            DealDamage();
-            Destroy(gameObject, secondsAfterExplosion);
-            shouldExplode = false;
-            hasExploded = true;
-        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         IHealth creature = collision.gameObject.GetComponent<IHealth>();
-        if (creature != null && !creaturesAffected.Contains(creature))
-        {
-            creaturesAffected.Add(creature);
-        }
+        DealDamage(creature);
     }
 
-    private void DealDamage()
+    //===============================
+    // Grenade
+    //===============================
+
+    public void TriggerExplosion()
     {
-        foreach (IHealth creature in creaturesAffected)
+        isTriggered = true;
+        Destroy(gameObject, secondsToEnd + secondsToMaxRadius);
+    }
+
+    private void DealDamage(IHealth creature)
+    {
+        if (creature != null)
         {
-            if (creature != null)
-            {
-                creature.TakeDamage(damage);
-            }  
+            creature.TakeDamage(damagePerSecond * Time.deltaTime);
         }
     }
 
     private void Expand()
     {
-        if (isTriggered && rb.velocity.magnitude <= Mathf.Epsilon + stopSensitivity && explosion.radius < explosionRadius)
+        if (isTriggered && HasStoppedMoving() && gasCollider.radius < explosionRadius)
         {
-            explosion.radius += explosionRadiusChangeRate * Time.deltaTime;
+            Debug.Log("Is Expanding");
+            gasCollider.radius += explosionRadiusChangeRate * Time.deltaTime;
+        }
+
+        if (isTriggered && HasStoppedMoving() && particles.activeSelf == false)
+        {
             particles.SetActive(true);
         }
-        else if (!hasExploded && explosion.radius >= explosionRadius)
-        {
-            shouldExplode = true;
-        }
+    }
+
+    private bool HasStoppedMoving()
+    {
+        return rb.velocity.magnitude <= Mathf.Epsilon + stopSensitivity;
     }
 }

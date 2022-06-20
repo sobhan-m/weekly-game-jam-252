@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -180844153
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: b840bc4267daa4845ba8fd8ee5dfce03, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -136,9 +136,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionRadius: 2
-  damage: 25
-  secondsToBlow: 0.75
-  secondsAfterExplosion: 0.25
+  damagePerSecond: 30
+  secondsToMaxRadius: 0.5
+  secondsToEnd: 3
   stopSensitivity: 0.25
   particles: {fileID: 7204999073730107045}
 --- !u!1 &7204999073730107045
@@ -362,8 +362,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.6132076, g: 0, b: 0.5758128, a: 0.39215687}
-      maxColor: {r: 1, g: 0, b: 0.12272024, a: 0.38431373}
+      minColor: {r: 0.6132076, g: 0, b: 0.5758128, a: 0.5019608}
+      maxColor: {r: 1, g: 0, b: 0.12272024, a: 0.5019608}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1007,7 +1007,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 100
-      minScalar: 1
+      minScalar: 50
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4918,7 +4918,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -180844153
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
