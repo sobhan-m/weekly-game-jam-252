@@ -21,7 +21,7 @@ public class Grenade : MonoBehaviour
     private bool hasExploded;
     private bool isTriggered;
 
-    private List<Enemy> enemiesAffected;
+    private List<IHealth> creaturesAffected;
 
 
     // Start is called before the first frame update
@@ -30,7 +30,7 @@ public class Grenade : MonoBehaviour
         explosion = gameObject.GetComponent<CircleCollider2D>();
         rb = gameObject.GetComponent<Rigidbody2D>();
 
-        enemiesAffected = new List<Enemy>();
+        creaturesAffected = new List<IHealth>();
 
         explosionRadiusChangeRate = explosionRadius / secondsToBlow;
 
@@ -66,23 +66,20 @@ public class Grenade : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        IHealth creature = collision.gameObject.GetComponent<IHealth>();
+        if (creature != null && !creaturesAffected.Contains(creature))
         {
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-            if (!enemiesAffected.Contains(enemy))
-            {
-                enemiesAffected.Add(enemy);
-            }
+            creaturesAffected.Add(creature);
         }
     }
 
     private void DealDamage()
     {
-        foreach (Enemy enemy in enemiesAffected)
+        foreach (IHealth creature in creaturesAffected)
         {
-            if (enemy != null)
+            if (creature != null)
             {
-                enemy.TakeDamage(damage);
+                creature.TakeDamage(damage);
             }  
         }
     }
