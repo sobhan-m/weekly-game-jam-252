@@ -40,7 +40,7 @@ public class GrenadeSource : MonoBehaviour
             rb.AddTorque(spinSpeed * spinDirection);
             spinDirection = -1 * spinDirection;
 
-            grenade.GetComponent<Grenade>().TriggerExplosion();
+            grenade.GetComponent<GasGrenade>().TriggerExplosion();
 
             --currentGrenades;
         }

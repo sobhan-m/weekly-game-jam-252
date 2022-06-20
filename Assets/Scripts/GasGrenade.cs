@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grenade : MonoBehaviour
+public class GasGrenade : MonoBehaviour
 {
     [SerializeField] float explosionRadius = 2f;
     [SerializeField] float damagePerSecond = 20f;
