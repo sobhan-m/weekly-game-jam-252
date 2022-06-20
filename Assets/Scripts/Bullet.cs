@@ -11,18 +11,14 @@ public class Bullet : MonoBehaviour
 
     private WeaponTypes bulletType = WeaponTypes.KETCHUP;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        IHealth creature = collision.gameObject.GetComponent<IHealth>();
+        if (creature != null)
         {
-            IHealth creature = collision.gameObject.GetComponent<IHealth>();
             creature.TakeDamage(damage);
-            Destroy(gameObject);
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 
     private void ChangeBulletSprite(WeaponTypes type)
