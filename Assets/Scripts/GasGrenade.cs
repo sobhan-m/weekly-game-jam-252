@@ -69,7 +69,6 @@ public class Grenade : MonoBehaviour
     {
         if (isTriggered && HasStoppedMoving() && gasCollider.radius < explosionRadius)
         {
-            Debug.Log("Is Expanding");
             gasCollider.radius += explosionRadiusChangeRate * Time.deltaTime;
         }
 
