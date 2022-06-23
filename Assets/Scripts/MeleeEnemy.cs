@@ -116,6 +116,9 @@ public class MeleeEnemy : MonoBehaviour, IHealth
         if (!IsDead())
         {
             currentHealth = Mathf.Max(0, currentHealth - damageAmount);
+
+            animator.SetTrigger("GetHurt");
+
             if (IsDead())
             {
                 Die();
