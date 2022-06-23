@@ -86,7 +86,7 @@ public class MeleeEnemy : MonoBehaviour, IHealth
             foreach(Collider2D target in hitTargets)
             {
                 IHealth targetHealth = target.GetComponent<IHealth>();
-                if (targetHealth != null)
+                if (targetHealth != null && target.gameObject != gameObject)
                 {
                     animator.SetTrigger("MeleeAttack");
 
