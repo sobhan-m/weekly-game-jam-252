@@ -15,9 +15,12 @@ public class Player : MonoBehaviour, IHealth
     [SerializeField] float dashCooldown = 2f;
     private float timeToNextDash;
     private bool isImmune;
+    private float dashX;
+    private float dashY;
+    private bool shouldDash;
 
-    private Rigidbody2D playerRigidBody;
-
+    private Rigidbody2D rb;
+    private Animator animator;
     private Camera mainCamera;
 
     //=============================
@@ -30,10 +33,17 @@ public class Player : MonoBehaviour, IHealth
 
         timeToNextDash = Time.time;
         isImmune = false;
+        shouldDash = false;
 
-        playerRigidBody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
 
         mainCamera = Camera.main;
+    }
+
+    private void Update()
+    {
+        TriggerDash();
     }
 
     private void FixedUpdate()
@@ -52,7 +62,7 @@ public class Player : MonoBehaviour, IHealth
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
-        playerRigidBody.velocity = new Vector2(x * speed, y * speed);
+        rb.velocity = new Vector2(x * speed, y * speed);
     }
 
     private void Aim()
@@ -64,35 +74,40 @@ public class Player : MonoBehaviour, IHealth
         float angleInDeg = angleInRad * Mathf.Rad2Deg - 90;
 
         // Rotate the torch.
-        playerRigidBody.MoveRotation(angleInDeg);
+        rb.rotation = angleInDeg;
+    }
+
+    private void TriggerDash()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time > timeToNextDash)
+        {
+            dashX = Input.GetAxis("Horizontal");
+            dashY = Input.GetAxis("Vertical");
+
+            shouldDash = true;
+        }
     }
 
     private void Dash()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time > timeToNextDash)
+        if (shouldDash)
         {
-            float x = Input.GetAxis("Horizontal");
-            float y = Input.GetAxis("Vertical");
+            animator.SetTrigger("triggerDash");
 
-            playerRigidBody.AddForce(new Vector2(x, y) * dashSpeed, ForceMode2D.Impulse);
-            
+            CycleDashImmunity();
+            Invoke("CycleDashImmunity", immunityDuration);
+
+            rb.AddForce(new Vector2(dashX, dashY) * dashSpeed, ForceMode2D.Impulse);
+
             timeToNextDash = Time.time + dashCooldown;
-
-            StartCoroutine(TriggerDashImmunity());
+            shouldDash = false;
         }
-        
-
     }
 
-    private IEnumerator TriggerDashImmunity()
+    private void CycleDashImmunity()
     {
-        isImmune = true;
-        Physics2D.IgnoreLayerCollision(6, 8, true);
-
-        yield return new WaitForSeconds(immunityDuration);
-
-        isImmune = false;
-        Physics2D.IgnoreLayerCollision(6, 8, false);
+        isImmune = !isImmune;
+        Physics2D.IgnoreLayerCollision(6, 8, isImmune);
     }
 
     //=============================
