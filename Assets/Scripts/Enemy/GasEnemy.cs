@@ -20,8 +20,11 @@ public class GasEnemy : MonoBehaviour, IHealth
 
     private bool isGasActive;
     private CircleCollider2D gasCollider;
+
     private Player player;
     private Rigidbody2D rb;
+    private Animator animator;
+
 
     //=====================================
     // Unity
@@ -32,6 +35,7 @@ public class GasEnemy : MonoBehaviour, IHealth
         player = FindObjectOfType<Player>();
         rb = gameObject.GetComponent<Rigidbody2D>();
         gasCollider = gameObject.GetComponent<CircleCollider2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Start()
@@ -72,7 +76,7 @@ public class GasEnemy : MonoBehaviour, IHealth
         if (player != null)
         {
             Vector3 direction = (player.transform.position - transform.position).normalized;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
             rb.rotation = angle;
             rb.velocity = new Vector2(direction.x, direction.y) * currentSpeed;
         }
@@ -96,7 +100,10 @@ public class GasEnemy : MonoBehaviour, IHealth
     {
         if (!IsDead())
         {
+            animator.SetTrigger("takeDamage");
+
             currentHealth = Mathf.Max(0, currentHealth - damageAmount);
+
             if (IsDead())
             {
                 Die();
