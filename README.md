@@ -10,6 +10,10 @@ It is a top-down shooter about fighting off animated food objects (based on the 
 - [x] ~~Implement Shot Types And Swapping~~
 - [x] ~~Implement Weapon Swapping~~
 - [x] ~~Implement Grenade Mechanic~~
+- [x] ~~Implement Pause System~~
+- [ ] Implement Save System
+- [x] ~~Implement Dash System~~
+- [ ] Implement Melee System
 
 ### Art
 - [x] ~~Main Character Sprite~~
@@ -17,10 +21,10 @@ It is a top-down shooter about fighting off animated food objects (based on the 
 - [x] ~~Weapon Type Sprites~~
 - [x] ~~Grenade Sprite~~
 - [x] ~~Floor Tiles~~
-- [ ] Wall Tiles
+- [x] ~~Wall Tiles~~
 - [ ] Other Tiles
-- [ ] Enemy Variant 1 Sprite
-- [ ] Enemy Variant 2 Sprite
+- [x] ~~Enemy Variant 1 Sprite~~
+- [x] ~~Enemy Variant 2 Sprite~~
 - [ ] Enemy Variant 3 Sprite
 
 ### Effects
