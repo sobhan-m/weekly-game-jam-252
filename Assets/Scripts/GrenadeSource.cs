@@ -13,6 +13,13 @@ public class GrenadeSource : MonoBehaviour
     private int spinDirection;
     private int currentGrenades;
 
+    private PauseSystem pauseSystem;
+
+    private void Awake()
+    {
+        pauseSystem = FindObjectOfType<PauseSystem>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +30,11 @@ public class GrenadeSource : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (pauseSystem.IsPaused())
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ThrowGrenade();

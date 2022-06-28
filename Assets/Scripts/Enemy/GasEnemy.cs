@@ -24,6 +24,7 @@ public class GasEnemy : MonoBehaviour, IHealth
     private Player player;
     private Rigidbody2D rb;
     private Animator animator;
+    private PauseSystem pauseSystem;
 
 
     //=====================================
@@ -36,6 +37,8 @@ public class GasEnemy : MonoBehaviour, IHealth
         rb = gameObject.GetComponent<Rigidbody2D>();
         gasCollider = gameObject.GetComponent<CircleCollider2D>();
         animator = GetComponent<Animator>();
+
+        pauseSystem = FindObjectOfType<PauseSystem>();
     }
 
     void Start()
@@ -49,6 +52,11 @@ public class GasEnemy : MonoBehaviour, IHealth
 
     private void Update()
     {
+        if (pauseSystem.IsPaused())
+        {
+            return;
+        }
+
         Chase();
         Weaken();
     }

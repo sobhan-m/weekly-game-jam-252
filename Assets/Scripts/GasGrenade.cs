@@ -18,6 +18,8 @@ public class GasGrenade : MonoBehaviour
     private float explosionRadiusChangeRate;
     private bool isTriggered;
 
+    private PauseSystem pauseSystem;
+
     //===============================
     // Unity
     //===============================
@@ -26,6 +28,7 @@ public class GasGrenade : MonoBehaviour
     {
         gasCollider = gameObject.GetComponent<CircleCollider2D>();
         rb = gameObject.GetComponent<Rigidbody2D>();
+        pauseSystem = FindObjectOfType<PauseSystem>();
 
         isTriggered = false; // Must be in Awake() because it is immediately triggered when thrown.
     }
@@ -38,6 +41,11 @@ public class GasGrenade : MonoBehaviour
 
     void Update()
     {
+        if (pauseSystem.IsPaused())
+        {
+            return;
+        }
+
         Expand();
     }
 

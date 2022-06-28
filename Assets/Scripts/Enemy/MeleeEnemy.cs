@@ -23,7 +23,7 @@ public class MeleeEnemy : MonoBehaviour, IHealth
     private Player player;
     private Rigidbody2D rb;
     private Animator animator;
-
+    private PauseSystem pauseSystem;
 
 
     //=====================================
@@ -35,6 +35,8 @@ public class MeleeEnemy : MonoBehaviour, IHealth
         player = FindObjectOfType<Player>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        pauseSystem = FindObjectOfType<PauseSystem>();
     }
 
     void Start()
@@ -45,6 +47,11 @@ public class MeleeEnemy : MonoBehaviour, IHealth
 
     private void Update()
     {
+        if (pauseSystem.IsPaused())
+        {
+            return;
+        }
+
         Chase();
         MeleeAttack();
     }

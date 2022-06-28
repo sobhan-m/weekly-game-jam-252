@@ -25,6 +25,7 @@ public class Player : MonoBehaviour, IHealth
     private Rigidbody2D rb;
     private Animator animator;
     private Camera mainCamera;
+    private PauseSystem pauseSystem;
 
     //=============================
     // Unity
@@ -34,6 +35,8 @@ public class Player : MonoBehaviour, IHealth
     {
         dashTrailParticles = dashTrailObject.GetComponent<ParticleSystem>();
         dashTrailParticles.Stop();
+
+        pauseSystem = FindObjectOfType<PauseSystem>();
     }
 
     void Start()
@@ -52,6 +55,11 @@ public class Player : MonoBehaviour, IHealth
 
     private void Update()
     {
+        if (pauseSystem.IsPaused())
+        {
+            return;
+        }
+
         TriggerDash();
     }
 

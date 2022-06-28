@@ -17,6 +17,13 @@ public class Gun : MonoBehaviour
 
     public float shotSpeed = 20f;
 
+    private PauseSystem pauseSystem;
+
+    private void Awake()
+    {
+        pauseSystem = FindObjectOfType<PauseSystem>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +33,11 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (pauseSystem.IsPaused())
+        {
+            return;
+        }
+
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
