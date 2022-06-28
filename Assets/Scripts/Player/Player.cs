@@ -13,11 +13,14 @@ public class Player : MonoBehaviour, IHealth
     [SerializeField] float dashSpeed = 20f;
     [SerializeField] float immunityDuration = 0.1f;
     [SerializeField] float dashCooldown = 2f;
+    [SerializeField] GameObject dashTrailObject;
+    [SerializeField] float dashTrailDuration = 0.2f;
     private float timeToNextDash;
     private bool isImmune;
     private float dashX;
     private float dashY;
     private bool shouldDash;
+    private ParticleSystem dashTrailParticles;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -26,6 +29,12 @@ public class Player : MonoBehaviour, IHealth
     //=============================
     // Unity
     //=============================
+
+    private void Awake()
+    {
+        dashTrailParticles = dashTrailObject.GetComponent<ParticleSystem>();
+        dashTrailParticles.Stop();
+    }
 
     void Start()
     {
@@ -94,10 +103,13 @@ public class Player : MonoBehaviour, IHealth
         {
             animator.SetTrigger("triggerDash");
 
+            CycleDashTrails();
             CycleDashImmunity();
             Invoke("CycleDashImmunity", immunityDuration);
+            Invoke("CycleDashTrails", dashTrailDuration);
 
             rb.AddForce(new Vector2(dashX, dashY) * dashSpeed, ForceMode2D.Impulse);
+
 
             timeToNextDash = Time.time + dashCooldown;
             shouldDash = false;
@@ -108,6 +120,18 @@ public class Player : MonoBehaviour, IHealth
     {
         isImmune = !isImmune;
         Physics2D.IgnoreLayerCollision(6, 8, isImmune);
+    }
+
+    private void CycleDashTrails()
+    {
+        if (dashTrailParticles.isEmitting)
+        {
+            dashTrailParticles.Stop();
+        }
+        else
+        {
+            dashTrailParticles.Play();
+        }      
     }
 
     //=============================
