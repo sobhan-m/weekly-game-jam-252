@@ -5,11 +5,17 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] float damage = 10f;
+    [SerializeField] float maxTimeToDestruction = 5f;
     [SerializeField] Sprite ketchupSprite;
     [SerializeField] Sprite mayonnaiseSprite;
     [SerializeField] Sprite mustardSprite;
 
     private WeaponTypes bulletType = WeaponTypes.KETCHUP;
+
+    private void Start()
+    {
+        Destroy(gameObject, maxTimeToDestruction);
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
