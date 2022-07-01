@@ -13,7 +13,8 @@ It is a top-down shooter about fighting off animated food objects (based on the 
 - [x] ~~Implement Pause System~~
 - [ ] Implement Save System
 - [x] ~~Implement Dash System~~
-- [ ] Implement Melee System
+- [x] ~~Implement Melee System~~
+- [ ] Shooting Ammo (?)
 
 ### Art
 - [x] ~~Main Character Sprite~~
@@ -42,7 +43,9 @@ It is a top-down shooter about fighting off animated food objects (based on the 
 - [x] ~~Create Weapon UI~~
 - [x] ~~Create Grenade UI~~
 - [x] ~~Create Health UI~~
-
+- [ ] Melee Cooldown
+- [ ] Dash Cooldown
+ 
 ### Publishing
 - [ ] Come Up With Name
 - [ ] Design Logo
