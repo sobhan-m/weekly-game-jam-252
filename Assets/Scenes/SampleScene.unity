@@ -180,6 +180,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ce95dfa29d571844a00b3f9f6256bd4, type: 3}
+--- !u!1 &248673693 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 723562383928479482, guid: 4620b4a99f8d0c94996d4a2f8660fa2f, type: 3}
+  m_PrefabInstance: {fileID: 723562384240880308}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &248673694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248673693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00e7f455d82f7a74496bb4bc9c037b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 50
+  meleeRadius: 1
+  meleeCooldown: 0.5
+  meleeAttackPoint: {fileID: 612997094}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -4373,6 +4394,36 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &612997093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 612997094}
+  m_Layer: 6
+  m_Name: melee-point
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &612997094
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612997093}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.68, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 723562384240880309}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &794220212
 GameObject:
   m_ObjectHideFlags: 0
@@ -5780,7 +5831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34ea466d5dc16d48ae8202773666a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 1118113675}
 --- !u!224 &1520980116 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2270295962327702947, guid: d76aed725198aa44682290649e099996, type: 3}
