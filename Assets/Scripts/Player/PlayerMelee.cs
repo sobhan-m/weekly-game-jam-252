@@ -8,6 +8,7 @@ public class PlayerMelee : MonoBehaviour
     [SerializeField] float meleeRadius = 1f;
     [SerializeField] float meleeCooldown = 0.5f;
     [SerializeField] Transform meleeAttackPoint;
+    [SerializeField] float pusbackForce = 5f;
 
     private PauseSystem pauseSystem;
     private float timeToNextAttack;
@@ -48,7 +49,19 @@ public class PlayerMelee : MonoBehaviour
             if (targetHealth != null && target.gameObject != gameObject)
             {
                 targetHealth.TakeDamage(damage);
+
+                // Knockback. Doesn't work at the moment.
+                /*Rigidbody2D targetRB = target.gameObject.GetComponent<Rigidbody2D>();
+                if (targetRB == null || targetRB.gameObject == gameObject)
+                {
+                    return;
+                }
+                Vector2 differenceVector = gameObject.transform.position - target.transform.position;
+                targetRB.AddForce(differenceVector * pusbackForce * 100, ForceMode2D.Impulse);*/
             }
+            
+
+            
         }
     }
 

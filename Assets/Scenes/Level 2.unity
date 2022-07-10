@@ -5362,6 +5362,7 @@ MonoBehaviour:
   meleeRadius: 1
   meleeCooldown: 0.5
   meleeAttackPoint: {fileID: 341371062}
+  pusbackForce: 20
 --- !u!1001 &1618282697
 PrefabInstance:
   m_ObjectHideFlags: 0
