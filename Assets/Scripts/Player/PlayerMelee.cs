@@ -12,10 +12,12 @@ public class PlayerMelee : MonoBehaviour
 
     private PauseSystem pauseSystem;
     private float timeToNextAttack;
+    private Animator animator;
 
     private void Awake()
     {
         pauseSystem = FindObjectOfType<PauseSystem>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -39,6 +41,7 @@ public class PlayerMelee : MonoBehaviour
     private void MeleeAttack()
     {
         timeToNextAttack = Time.time + meleeCooldown;
+        animator.SetTrigger("triggerPunch");
 
 
         Collider2D[] hitTargets = Physics2D.OverlapCircleAll(meleeAttackPoint.position, meleeRadius);
