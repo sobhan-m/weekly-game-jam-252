@@ -8,13 +8,14 @@ public class GasGrenade : MonoBehaviour
     [SerializeField] float damagePerSecond = 20f;
     [SerializeField] float secondsToMaxRadius = 0.5f;
     [SerializeField] float secondsToEnd = 2f;
-    [SerializeField] float stopSensitivity = 0.25f;
+    [SerializeField] float secondsToTrigger = 0.25f;
 
     [SerializeField] GameObject particles;
 
     private CircleCollider2D gasCollider;
     private Rigidbody2D rb;
 
+    private float timeToTrigger;
     private float explosionRadiusChangeRate;
     private bool isTriggered;
 
@@ -37,6 +38,7 @@ public class GasGrenade : MonoBehaviour
     {
         particles.SetActive(false);
         explosionRadiusChangeRate = explosionRadius / secondsToMaxRadius;
+        timeToTrigger = Time.time + secondsToTrigger;
     }
 
     void Update()
@@ -75,19 +77,19 @@ public class GasGrenade : MonoBehaviour
 
     private void Expand()
     {
-        if (isTriggered && HasStoppedMoving() && gasCollider.radius < explosionRadius)
+        if (isTriggered && HasPassedTriggerTime() && gasCollider.radius < explosionRadius)
         {
             gasCollider.radius += explosionRadiusChangeRate * Time.deltaTime;
         }
 
-        if (isTriggered && HasStoppedMoving() && particles.activeSelf == false)
+        if (isTriggered && HasPassedTriggerTime() && particles.activeSelf == false)
         {
             particles.SetActive(true);
         }
     }
 
-    private bool HasStoppedMoving()
+    private bool HasPassedTriggerTime()
     {
-        return rb.velocity.magnitude <= Mathf.Epsilon + stopSensitivity;
+        return Time.time > timeToTrigger;
     }
 }

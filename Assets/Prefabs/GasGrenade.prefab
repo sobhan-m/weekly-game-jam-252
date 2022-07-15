@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 7032286061829761990}
   - component: {fileID: 7032286061829761984}
   - component: {fileID: 7032286061829761987}
+  - component: {fileID: 299058446}
   m_Layer: 0
-  m_Name: Grenade
+  m_Name: GasGrenade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,10 +103,10 @@ Rigidbody2D:
   m_LinearDrag: 5
   m_AngularDrag: 2
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 2a049e6fe5e86a74eae524088d5ec7ed, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &7032286061829761984
 CircleCollider2D:
@@ -139,8 +140,41 @@ MonoBehaviour:
   damagePerSecond: 30
   secondsToMaxRadius: 0.5
   secondsToEnd: 3
-  stopSensitivity: 0.25
+  secondsToTrigger: 0.25
   particles: {fileID: 7204999073730107045}
+--- !u!60 &299058446
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7032286061829761988}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.2, y: 0.2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.107284546, y: 0.19718692}
+      - {x: -0.04286194, y: 0.2290779}
+      - {x: -0.23809052, y: 0.034491032}
+      - {x: -0.2380867, y: -0.052849174}
+      - {x: -0.05186844, y: -0.23680574}
+      - {x: 0.025783539, y: -0.2474361}
+      - {x: 0.22745895, y: -0.057033658}
+      - {x: 0.22745514, y: 0.05413115}
 --- !u!1 &7204999073730107045
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,7 +280,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
