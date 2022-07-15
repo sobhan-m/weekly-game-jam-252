@@ -98,8 +98,8 @@ public class Player : MonoBehaviour, IHealth
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time > timeToNextDash)
         {
-            dashX = Input.GetAxis("Horizontal");
-            dashY = Input.GetAxis("Vertical");
+            dashX = Input.GetAxisRaw("Horizontal");
+            dashY = Input.GetAxisRaw("Vertical");
 
             shouldDash = true;
         }
@@ -116,7 +116,7 @@ public class Player : MonoBehaviour, IHealth
             Invoke("CycleDashImmunity", immunityDuration);
             Invoke("CycleDashTrails", dashTrailDuration);
 
-            rb.AddForce(new Vector2(dashX, dashY) * dashSpeed, ForceMode2D.Impulse);
+            rb.MovePosition(transform.position + (new Vector3(dashX, dashY) * dashSpeed));
 
 
             timeToNextDash = Time.time + dashCooldown;
