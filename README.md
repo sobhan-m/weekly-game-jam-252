@@ -9,17 +9,13 @@ It is a top-down shooter about fighting off animated food objects (based on the 
 - [ ] Implement Save System
 - [ ] Add Pathfinding For Enemies
 - [ ] Implement Pickups
-- [ ] Shooting Ammo (?)
-
-### Art
-- [ ] Other Tiles
 
 ### Animation
 - [ ] Update Enemy Melee
 
 ### Effects
-- [ ] Weapon
-- [ ] Melee
+- [ ] Weapon ?
+- [ ] Melee ?
 
 ### Sound
 - [ ] Walking
@@ -28,9 +24,8 @@ It is a top-down shooter about fighting off animated food objects (based on the 
 - [ ] Grenade Effects
 - [ ] Enemy Sounds
 
-### UI/UX
-- [ ] Melee Cooldown
-- [ ] Dash Cooldown
+# UI/UX
+- [ ] Pause Menu
  
 ### Publishing
 - [ ] Come Up With Name
