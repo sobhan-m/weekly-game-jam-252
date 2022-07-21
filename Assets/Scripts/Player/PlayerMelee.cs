@@ -9,6 +9,7 @@ public class PlayerMelee : MonoBehaviour
     [SerializeField] float meleeCooldown = 0.5f;
     [SerializeField] Transform meleeAttackPoint;
     [SerializeField] float pusbackForce = 5f;
+    //[SerializeField] GameObject meleeEffectPrefab;
 
     private PauseSystem pauseSystem;
     private float timeToNextAttack;
@@ -42,6 +43,7 @@ public class PlayerMelee : MonoBehaviour
     {
         timeToNextAttack = Time.time + meleeCooldown;
         animator.SetTrigger("triggerPunch");
+        //PlayMeleeEffect();
 
 
         Collider2D[] hitTargets = Physics2D.OverlapCircleAll(meleeAttackPoint.position, meleeRadius);
@@ -68,6 +70,11 @@ public class PlayerMelee : MonoBehaviour
         }
     }
 
+    /*private void PlayMeleeEffect()
+    {
+        GameObject meleeEffect = Instantiate(meleeEffectPrefab, transform.position, Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + 90));
+        Destroy(meleeEffect, meleeEffect.GetComponent<ParticleSystem>().main.duration);
+    }*/
 
 
 }
