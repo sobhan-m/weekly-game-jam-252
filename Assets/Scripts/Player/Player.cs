@@ -131,6 +131,16 @@ public class Player : MonoBehaviour, IHealth
         Destroy(dashTrails, dashTrails.GetComponent<ParticleSystem>().main.duration);
     }
 
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
+
+    public float GetSpeed()
+    {
+        return speed;
+    }
+
     //=============================
     // Health
     //=============================
