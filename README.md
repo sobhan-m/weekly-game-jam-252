@@ -8,7 +8,7 @@ It is a top-down shooter about fighting off animated food objects (based on the 
 ### Programming
 - [ ] Implement Save System
 - [ ] Add Pathfinding For Enemies
-- [ ] Implement Pickups
+- [ ] Implement Boss Fight System
 
 ### Animation
 - [ ] Update Enemy Melee
