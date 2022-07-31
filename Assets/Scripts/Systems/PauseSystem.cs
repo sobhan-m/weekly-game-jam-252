@@ -28,14 +28,14 @@ public class PauseSystem : MonoBehaviour
         }
     }
 
-    private void Pause()
+    public void Pause()
     {
         isPaused = true;
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
     }
 
-    private void Resume()
+    public void Resume()
     {
         isPaused = false;
         Time.timeScale = 1f;
