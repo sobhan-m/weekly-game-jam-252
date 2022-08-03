@@ -25,7 +25,6 @@ It is a top-down shooter about fighting off animated food objects (based on the 
 - [ ] Enemy Sounds
 
 ### UI/UX
-- [ ] Main Menu
 - [ ] Game Over Menu
  
 ### Publishing
