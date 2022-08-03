@@ -15,6 +15,11 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene("Game Over");
     }
 
+    public void LoadGameOverWithDelay(float delayInSeconds)
+    {
+        Invoke("LoadGameOver", delayInSeconds);
+    }
+
     public void LoadNextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

@@ -162,6 +162,8 @@ public class Player : MonoBehaviour, IHealth
             currentHealth = Mathf.Max(0, currentHealth - damageAmount);
             if (IsDead())
             {
+                FindObjectOfType<LevelManager>().LoadGameOverWithDelay(1f);
+
                 Die();
             }
         }
