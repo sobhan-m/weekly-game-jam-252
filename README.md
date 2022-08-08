@@ -25,7 +25,7 @@ It is a top-down shooter about fighting off animated food objects (based on the 
 - [ ] Enemy Sounds
 
 ### Design
-- [ ] Create Level 1
+- [x] Create Level 1
 - [ ] Create Level 2
 - [ ] Create Level 3
 - [ ] Create Level 4
