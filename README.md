@@ -24,6 +24,18 @@ It is a top-down shooter about fighting off animated food objects (based on the 
 - [ ] Grenade Effects
 - [ ] Enemy Sounds
 
+### Design
+- [ ] Create Level 1
+- [ ] Create Level 2
+- [ ] Create Level 3
+- [ ] Create Level 4
+- [ ] Create Level 5
+- [ ] Create Level 6
+- [ ] Create Level 7
+- [ ] Create Level 8
+- [ ] Create Level 9
+- [ ] Create Level 10
+
 ### UI/UX
  
 ### Publishing
