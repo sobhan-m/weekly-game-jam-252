@@ -9,8 +9,7 @@ public class PauseSystem : MonoBehaviour
 
     private void Awake()
     {
-        isPaused = false;
-        pauseMenu.SetActive(false);
+        Resume();
     }
 
     void Update()
