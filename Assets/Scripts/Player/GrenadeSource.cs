@@ -67,4 +67,9 @@ public class GrenadeSource : MonoBehaviour
     {
         return currentGrenades;
     }
+
+    public void SetCurrentGrenades(int num)
+    {
+        currentGrenades = Mathf.Clamp(num, 0, maxGrenades);
+    }
 }

@@ -175,6 +175,11 @@ public class Player : MonoBehaviour, IHealth
         return currentHealth;
     }
 
+    public void SetCurrentHealth(float currentHealth)
+    {
+        this.currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+    }
+
     public float GetMaxHealth()
     {
         return maxHealth;
