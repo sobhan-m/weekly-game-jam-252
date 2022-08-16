@@ -6,22 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class SaveSystem : MonoBehaviour
 {
-    private static bool isLoadingFromSave = false;
 
     private void Start()
     {
-        Debug.Log("SaveSystem.Start(): isLoadingFromSpace = " + isLoadingFromSave);
-        if (isLoadingFromSave)
-        {
-            ApplyLoadedData();
-        }
+        ApplyLoadedData();
         WriteSave();
     }
 
     public static void WriteSave()
     {
-        isLoadingFromSave = true;
-
         Player player = FindObjectOfType<Player>();
         GrenadeSource grenadeSource = FindObjectOfType<GrenadeSource>();
 
@@ -46,29 +39,33 @@ public class SaveSystem : MonoBehaviour
     {
         string path = Application.persistentDataPath + "save.json";
 
-        SaveModel save =  JsonUtility.FromJson<SaveModel>(File.ReadAllText(path));
-
-        Debug.Log("SaveSystem.ReadSave(): save = " + save);
-
-        return save;
+        if (File.Exists(path))
+        {
+            SaveModel save = JsonUtility.FromJson<SaveModel>(File.ReadAllText(path));
+            Debug.Log("SaveSystem.ReadSave(): save = " + save);
+            return save;
+        }
+        else
+        {
+            Debug.Log("SaveSystem.ReadSave(): No save found.");
+            return null;
+        }
     }
 
     public static string GetSavedLevel()
     {
-        isLoadingFromSave = true;
         return SaveSystem.ReadSave().currentLevel;
-    }
-
-    public static bool IsLoadingFromSave()
-    {
-        return isLoadingFromSave;
     }
 
     public static void ApplyLoadedData()
     {
-        isLoadingFromSave = false;
-
         SaveModel save = ReadSave();
+
+        if (save == null)
+        {
+            return;
+        }
+
 
         Player player = FindObjectOfType<Player>();
         GrenadeSource grenadeSource = FindObjectOfType<GrenadeSource>();

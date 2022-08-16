@@ -680,7 +680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 667246208840040400, guid: 47a65e4a117773d4fa89fa1c943a56d2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadNextLevel
+      value: StartNewGame
       objectReference: {fileID: 0}
     - target: {fileID: 667246208840040400, guid: 47a65e4a117773d4fa89fa1c943a56d2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

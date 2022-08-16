@@ -30,6 +30,12 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(SaveSystem.GetSavedLevel());
     }
 
+    public void StartNewGame()
+    {
+        SaveSystem.DeleteSave();
+        SceneManager.LoadScene("Level 1");
+    }
+
     public void QuitGame()
     {
         Application.Quit();
