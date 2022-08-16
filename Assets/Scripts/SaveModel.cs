@@ -15,4 +15,9 @@ public class SaveModel
         currentNumOfGrenades = grenadeSource.GetCurrentGrenades();
         currentLevel = SceneManager.GetActiveScene().name;
     }
+
+    public override string ToString() 
+    {
+        return string.Format("SaveMode: playerCurrentHealth = {0}, currentNumOfGrenades = {1}, currentLevel = {2}", playerCurrentHealth, currentNumOfGrenades, currentLevel);
+    }
 }

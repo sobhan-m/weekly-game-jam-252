@@ -10,6 +10,7 @@ public class SaveSystem : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("SaveSystem.Start(): isLoadingFromSpace = " + isLoadingFromSave);
         if (isLoadingFromSave)
         {
             ApplyLoadedData();
@@ -44,6 +45,8 @@ public class SaveSystem : MonoBehaviour
 
         SaveModel save =  JsonUtility.FromJson<SaveModel>(File.ReadAllText(path));
 
+        Debug.Log("SaveSystem.ReadSave(): save = " + save);
+
         return save;
     }
 
@@ -72,7 +75,23 @@ public class SaveSystem : MonoBehaviour
             Debug.LogError("SaveSystem.ApplyLoadedData(): Player and GrenadeSource cannot be null.");
         }
 
+        Debug.Log("SaveSystem.ApplyLoadedData(): save = " + save);
+
         player.SetCurrentHealth(save.playerCurrentHealth);
         grenadeSource.SetCurrentGrenades(save.currentNumOfGrenades);
+    }
+
+    public static bool IsThereASave()
+    {
+        string path = Application.persistentDataPath + "save.json";
+
+        return File.Exists(path);
+    }
+
+    public static void DeleteSave()
+    {
+        string path = Application.persistentDataPath + "save.json";
+
+        File.Delete(path);
     }
 }

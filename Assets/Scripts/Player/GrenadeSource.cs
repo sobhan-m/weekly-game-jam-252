@@ -18,13 +18,13 @@ public class GrenadeSource : MonoBehaviour
     private void Awake()
     {
         pauseSystem = FindObjectOfType<PauseSystem>();
+        currentGrenades = maxGrenades;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         spinDirection = 1;
-        currentGrenades = maxGrenades;
     }
 
     // Update is called once per frame

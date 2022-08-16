@@ -33,12 +33,11 @@ public class Player : MonoBehaviour, IHealth
     private void Awake()
     {
         pauseSystem = FindObjectOfType<PauseSystem>();
+        currentHealth = maxHealth;
     }
 
     void Start()
     {
-        currentHealth = maxHealth;
-
         timeToNextDash = Time.time;
         isImmune = false;
         shouldDash = false;
