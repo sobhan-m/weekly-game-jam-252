@@ -15,10 +15,13 @@ public class SaveSystem : MonoBehaviour
         {
             ApplyLoadedData();
         }
+        WriteSave();
     }
 
     public static void WriteSave()
     {
+        isLoadingFromSave = true;
+
         Player player = FindObjectOfType<Player>();
         GrenadeSource grenadeSource = FindObjectOfType<GrenadeSource>();
 

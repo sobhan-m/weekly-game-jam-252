@@ -25,6 +25,7 @@ public class LevelTrigger : MonoBehaviour
             return;
         }
 
+        SaveSystem.WriteSave();
         levelManager.LoadNextLevel();
     }
 }
