@@ -6,7 +6,7 @@ It is a top-down shooter about fighting off animated food objects (based on the 
 ## To Do
 
 ### Programming
-- [ ] Implement Save System
+- [x] ~~Implement Save System~~
 - [ ] Add Pathfinding For Enemies
 - [ ] Implement Boss Fight System
 
