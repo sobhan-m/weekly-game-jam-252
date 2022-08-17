@@ -26,8 +26,8 @@ It is a top-down shooter about fighting off animated food objects (based on the 
 
 ### Design
 - [x] Create Level 1
-- [ ] Create Level 2
-- [ ] Create Level 3
+- [x] Create Level 2
+- [x] Create Level 3
 - [ ] Create Level 4
 - [ ] Create Level 5
 - [ ] Create Level 6
