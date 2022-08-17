@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8907311173245661826}
   - component: {fileID: 8907311173245661836}
   m_Layer: 0
-  m_Name: SaveTrigger
+  m_Name: Save Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
